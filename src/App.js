@@ -14,12 +14,15 @@ function App() {
   const [Lista, setLista] = useState([]);
 
   const handleClick = () => {
+
+    if(numberTasks != 0){
+      // É SEMPRE MAIS UM AO NÚMERO DE TASKS PORQUE PRECISAMOS QUE A ULTIMA SEJA INCLUIDA!
+      let numbid = [];
+      numbid = Lista.map((list) => list.number);
+      let RandNum = Math.floor(Math.random() * numbid.length + 1);
+      setnumberChoosed(numbid[RandNum - 1]);
+    }
     
-    // É SEMPRE MAIS UM AO NÚMERO DE TASKS PORQUE PRECISAMOS QUE A ULTIMA SEJA INCLUIDA!
-    let numbid = [];
-    numbid = Lista.map((list) => list.number);
-    let RandNum = Math.floor(Math.random() * numbid.length + 1);
-    setnumberChoosed(numbid[RandNum - 1]);
 
   }
 
