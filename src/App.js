@@ -16,8 +16,10 @@ function App() {
   const handleClick = () => {
     
     // É SEMPRE MAIS UM AO NÚMERO DE TASKS PORQUE PRECISAMOS QUE A ULTIMA SEJA INCLUIDA!
-    let RandNum = Math.floor(Math.random() * numberTasks + 1);
-    setnumberChoosed(RandNum);
+    let numbid = [];
+    numbid = Lista.map((list) => list.number);
+    let RandNum = Math.floor(Math.random() * numbid.length + 1);
+    setnumberChoosed(numbid[RandNum - 1]);
 
   }
 
