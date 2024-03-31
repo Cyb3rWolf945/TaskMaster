@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {Accordion, AccordionItem, Button, Divider, Input, Textarea} from "@nextui-org/react";
+import {Accordion, AccordionItem, Button, Card, Divider, Input, Tab, Tabs, Textarea} from "@nextui-org/react";
 import { useEffect, useState } from 'react';
 import List from './components/List';
+import CountDown from './components/CountDown';
 
 function App() {
 
@@ -102,16 +103,42 @@ function App() {
 
       <Divider/>
 
-      <div className='flex flex-col gap-8 w-full items-center'>
-            <Button onClick={handleClick}>
-              Randomize
-            </Button>
+      <div className={'w-full' + numberChoosed != 0 ? 'flex justify-around w-full' : ''}>
+            <div className='flex flex-col gap-8 items-center'>
+                  <Button onClick={handleClick}>
+                    Randomize
+                  </Button>
 
-            <h1>
-              {
-                numberChoosed == 0 ? <p className='font-semibold'>Carregue no Button Randomize</p> : <h1 className='font-semibold text-8xl mt-8'>{numberChoosed}</h1>
-              }
-            </h1>
+                  <h1>
+                    {
+                      numberChoosed == 0 ? <p className='font-semibold'>Carregue no Button Randomize</p> : <h1 className='font-semibold text-8xl mt-8'>{numberChoosed}</h1>
+                    }
+                  </h1>
+            </div>
+
+
+          {numberChoosed === 0 ?  '' : (         
+            <div>
+              <Tabs>
+                <Tab key="Pomodoro" title="Pomodoro">
+                  <Card>
+                    <CountDown Counter={'P'}/>
+                  </Card>
+                </Tab>
+                <Tab key="ShortBreak" title="Short Break">
+                  <Card>
+                   <CountDown Counter={'S'}/>
+                  </Card>
+                </Tab>
+                <Tab key="LongBreak" title="Long Break">
+                  <Card>
+                   <CountDown Counter={'L'}/>
+                  </Card>
+                </Tab>
+              </Tabs>
+            </div>)
+        }
+
       </div>
     </div>
   );
